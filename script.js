@@ -25,23 +25,14 @@ var displayMessage = document.querySelector(".user-message");
 var displayLastGuess = document.querySelector("#top-message");
 //"Your last guess was"
 
-//var el = document.getElementByClassName("display");
-//el.innerHTML = '<p>' + randomNum + '</p>';
-//nothing has been done here yet -- please see page 134 for more information
-
-var min = 1;
-var max = 100;
-
-
+//disable
+//resetButton.disabled = true;
 
 //Functions
 //Clear field
 function clearField () {
     displayMessage.textContent = (" ");
     randomGuess.value = (null);
-    //DISABLE BUTTONS...
-    //clearGuessButton.disabled = true;
-    //resetButton.disabled = true;
     return;
 }
 
@@ -50,33 +41,53 @@ function generateRandomNum () {
   return Math.floor((Math.random() * 100) +1);
 }
 
+//Validate that the input is a number & is in range
+function validateNum () {
+  var userGuess = parseInt(randomGuess.value);
+    if (isNaN(userGuess)) {
+      displayMessage.textContent = (" ");
+      displayNumber.textContent = (" ");
+      displayLastGuess.textContent = ("That is not a number!");
+      return;
+  } else if (userGuess < 1 || userGuess > 100) {
+      displayMessage.textContent = (" ");
+      displayNumber.textContent = (" ");
+      displayLastGuess.textContent = ("Please pick a number between 1 and 100.");
+      return;
+  } else {
+      evaluateGuess();
+  }
+}
+
+//Validate user guesses and return a message
+function evaluateGuess() {
+  if (parseInt(randomGuess.value) > randomNum) {
+      return displayMessage.innerText = ("Your guess is too high!");
+  } else if (parseInt(randomGuess.value) < randomNum) {
+      return displayMessage.innerText = ("Your guess is too low!");
+  } else if (parseInt(randomGuess.value) === randomNum){
+      return displayMessage.innerText = ("BOOM!");
+  }
+}
+
 //Reset field
 function resetField () {
   displayMessage.textContent = (" ");
   displayNumber.textContent = (" ");
+  clearGuessButton.disabled = true;
   displayLastGuess.textContent = ("Play again?");
   return;
 }
 
+
 //Events
 //Clicking "Guess" - user's guess is displayed on the screen, as well as a message on whether the guessed number is too high or too low
 submitGuessButton.addEventListener('click', function() {
-  validateNumber();
   displayLastGuess.textContent = ("Your last guess was");
   displayNumber.textContent = randomGuess.value;
-  if (parseInt(randomGuess.value) > randomNum) {
-    return displayMessage.innerText = ("Your guess is too high!");
-  } else if (parseInt(randomGuess.value) < randomNum) {
-    return displayMessage.innerText = ("Your guess is too low!");
-  } else if (parseInt(randomGuess.value) === randomNum){
-    return displayMessage.innerText = ("BOOM!");
-  } else {
-  displayLastGuess.innerText = (" ");
-  return displayMessage.innerText = ("That's not a number, dude...");
-}
+  validateNum();
+  clearGuessButton.disabled = false;
 });
-
-
 
 //Clicking "Clear" - function clearField is ran
 clearGuessButton.addEventListener ('click', function () {
@@ -91,9 +102,6 @@ resetButton.addEventListener ('click', function() {
 
 
 /*AT PHASE 2:
-The input field should only accept numerical entries, within the defined min and max range
-The application should display an error message if the guess is not a number (e.g. parseInt() returns NaN) - (alert maybe??)
-The application should display an error if the guess is outside of the range of possible answers.
 The clear button should be disabled if there is nothing to clear. -- in CSS?
 The reset button should be disabled if there is nothing to reset.*/
 
