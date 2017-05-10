@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Number Guesser</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  </head>
+
+  <body>
+      <header role="banner">
+        <h1>Number <span>Guesser</span></h1>
+      </header>
+
+      <section role="number-guesser">
+        <form>
+          <label for="your-guess">
+            <input type="number" name="guess" id="your-guess" min="1" max="100" placeholder="Enter your guess">
+          </label>
+
+          <label for="submit-your-guess">
+            <input type="button" name="submit" class="guess" id="submit-your-guess" value="Guess" /> <!--disabled />-->
+          </label>
+
+          <label for="clear-your-guess">
+            <input type="button" name="clear" class="guess" id="clear-your-guess" value="Clear" />
+            <!--disabled />-->
+          </label>
+          <p id="top-message"></p>
+          <p class="display"></p>
+          <p class="user-message"></p>
+
+          <label for="reset-field">
+            <input type="reset" name="reset" id="reset-field" value="Reset" /> <!--disabled/>-->
+          </label>
+        </form>
+      </section>
+
+  <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
