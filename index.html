@@ -11,27 +11,50 @@
         <h1>Number <span>Guesser</span></h1>
       </header>
 
-      <section role="number-guesser">
+      <section role="game-form">
         <form>
           <label for="your-guess">
             <input type="number" name="guess" id="your-guess" min="1" max="100" placeholder="Enter your guess">
           </label>
 
           <label for="submit-your-guess">
-            <input type="button" name="submit" class="guess" id="submit-your-guess" value="Guess" /> <!--disabled />-->
+            <input type="button" name="submit" class="guess" id="submit-your-guess" value="Guess" />
           </label>
 
           <label for="clear-your-guess">
             <input type="button" name="clear" class="guess" id="clear-your-guess" value="Clear" />
-            <!--disabled />-->
           </label>
+
           <p id="top-message"></p>
           <p class="display"></p>
           <p class="user-message"></p>
 
           <label for="reset-field">
-            <input type="reset" name="reset" id="reset-field" value="Reset" /> <!--disabled/>-->
+            <input type="reset" name="reset" id="reset-field" value="Reset" />
           </label>
+        </form>
+      </section>
+
+      <section role="extended-game-form">
+        <form>
+          <br />
+          <p id="extended-message">You may also enter a minimum and maximum range of your choosing:</p>
+
+          <label for="new-minimum">
+            <input type="number" name="minimum" id="new-minimum" placeholder="New minimum"/>
+          </label>
+
+          <!--<label for="button-new-minimum">
+            <input type="button" name="minimum-button" id="button-new-minimum" value="Set Minimum" />
+          </label>-->
+
+          <label for="new-maximum">
+            <input type="number" name="maximum" id="new-maximum" placeholder="New maximum"/>
+          </label>
+
+          <!--<label for="button-new-maximum">
+            <input type="button" name="maximum-button" id="button-new-maximum" value="Set Maximum" />
+          </label>-->
         </form>
       </section>
 
